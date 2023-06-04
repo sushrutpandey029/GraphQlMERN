@@ -1,0 +1,82 @@
+// text-------------------------------------
+# Write your query or mutation here
+query GetAllusers{
+  users{
+    _id
+    firstname
+    lastname
+    email
+    password
+    quotes{
+      by
+      name
+    }
+  }
+}
+
+---------------------------------------
+query getAllQuotes{
+  quotes{
+    by
+    name
+  }
+}
+
+
+-------------------------------
+
+query singleuserbyid{
+  user(_id:"12345"){
+    _id
+    firstname
+    lastname
+    email
+    quotes{
+      by
+      name
+    }
+  }
+}
+
+
+
+--------------
+query getquotesbyuser{
+  userquotes(by:"12345"){
+    by
+    name
+  }
+}
+
+////////////////////////////////////////////////////
+
+query getquotesbyuser($user_id:ID!){
+  userquotes(by:$user_id){
+    by
+    name
+  }
+}
+
+
+
+/////////////////////////////////////////////////////////////
+
+mutation createUser($UserNew:UserInput!){
+  user:signupUserDummy(UserNew:$UserNew){
+    _id
+    firstname
+    lastname    return value
+    email
+  }
+}
+
+
+
+mutation siginUser($UserSignin:UserSiginInput!){
+  user:siginUser(UserSigin:$UserSignin){
+    token
+  }
+}
+
+
+mongodb+srv://sushrutpandey1:sushrutpandey1@cluster0.siqj0vg.mongodb.net/?retryWrites=true&w=majority
